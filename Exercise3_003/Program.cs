@@ -31,6 +31,14 @@ namespace Exercise3_003
             else
                 return(false); /*return false if the node is not found*/
         }
+        public bool listEmpty()
+        {
+            if (last == null)
+                return true;
+            else
+                return false;
+        }
+        public void transverse() /*transverse all the nodes of the list*/
     
     }
 
