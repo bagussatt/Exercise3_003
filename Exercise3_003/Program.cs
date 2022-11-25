@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 
@@ -30,6 +31,56 @@ namespace Exercise3_003
                 return true;
             else
                 return(false); /*return false if the node is not found*/
+        }
+        public void addNote()
+        {
+            int nim;
+            string nm;
+            Console.WriteLine("\nEnter the roll number of the student:  ");
+            nim = Convert.ToInt32(Console.ReadLine());
+            Console.Write("\nEnter the name of the student:  ");
+            nm = Console.ReadLine();
+            Node newNode = new Node();
+            newNode.rollNumber = nim;
+            newNode.name = nm;
+
+            //check if the list empty
+            if (last == null || nim <= last.rollNumber)
+            {
+                if ((last != null) && (nim == last.rollNumber))
+                {
+                    Console.WriteLine("\nDuplicate number not allowed");
+                    return;
+                }
+                newNode.next = last.next;
+                last.next = newNode;
+                return;
+            }
+            Node current;
+            for (current = last;
+                current != null && nim >= current.rollNumber;
+                )
+            {
+
+                if (nim == current.rollNumber)
+                {
+                    Console.WriteLine("Duplicate roll numbers not allowed");
+                    return;
+                }
+            }
+            /*on the execution of the above for loop, prev and
+            * current will point to those nodes
+            * between which the new node is to be inserted*/
+            newNode.next = current;
+
+            //if the node is to be inserted at the end of the list
+            if (current == null)
+            {
+                newNode.next = null;
+                return;
+            }
+            last.next = newNode;
+
         }
         public bool listEmpty()
         {
@@ -66,12 +117,12 @@ namespace Exercise3_003
                     last.next.rollNumber + "       " + last.next.name);
 
         }
-        public void insertbeginning()
-        {
+            public void insertbeginning()
+          {
             Node temp = new Node();
             temp.next = last.next;
             last.next = temp;
-        }
+          }
         static void Main(string[] args)
         {
             CircularList obj = new CircularList();
@@ -82,9 +133,10 @@ namespace Exercise3_003
                     Console.WriteLine("\nMenu");
                     Console.WriteLine("1. view all record in the list");
                     Console.WriteLine("2. Search for a record in the list");
-                    Console.WriteLine("3. display the first record in the list");
-                    Console.WriteLine("Exit");
-                    Console.Write("\n Enter your choice (1-):  ");
+                    Console.WriteLine("3. display the first record");
+                    Console.WriteLine("4. insert number");
+                    Console.WriteLine("5. exit");
+                    Console.Write("\n Enter your choice (1-5):  ");
                     char ch = Convert.ToChar(Console.ReadLine());
                     switch (ch)
                     {
@@ -121,6 +173,11 @@ namespace Exercise3_003
                             }
                             break;
                         case '4':
+                            {
+                                obj.addNote();
+                            }
+                            break;
+                        case '5':
                             return;
                         default:
                             {
