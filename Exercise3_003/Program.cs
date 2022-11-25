@@ -26,6 +26,7 @@ namespace Exercise3_003
                 if (rollNo == current.rollNumber)
                     return true; /*return true if the node is found*/
             }
+            if (rollNo == last.rollNumber) /* if the node is present at the end*/
         }
     
     }
