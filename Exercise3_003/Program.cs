@@ -57,6 +57,15 @@ namespace Exercise3_003
             }
             
         }
+        public void firstnode()
+        {
+            if (listEmpty())
+                Console.WriteLine("\nList is empty");
+            else
+                Console.WriteLine("\nThe first record in the list is: \n\n" +
+                    last.next.rollNumber + "       " + last.next.name);
+
+        }
     
     }
 
