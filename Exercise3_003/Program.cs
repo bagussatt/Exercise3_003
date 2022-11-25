@@ -15,5 +15,9 @@ namespace Exercise3_003
     {
         Node last;
     }
-    public bool search
+    public bool search(int rollNo, ref Node previous,ref Node current)
+    //Searches for the specified node
+    {
+
+    }
 }
