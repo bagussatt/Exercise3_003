@@ -68,11 +68,73 @@ namespace Exercise3_003
         }
         public void insertbeginning()
         {
-            Node temp = new Node;
+            Node temp = new Node();
             temp.next = last.next;
             last.next = temp;
         }
-        static void Main(string[])
+        static void Main(string[] args)
+        {
+            CircularList obj = new CircularList();
+            while (true)
+            {
+                try
+                {
+                    Console.WriteLine("\nMenu");
+                    Console.WriteLine("1. view all record in the list");
+                    Console.WriteLine("2. Search for a record in the list");
+                    Console.WriteLine("3. display the first record in the list");
+                    Console.WriteLine("Exit");
+                    Console.Write("\n Enter your choice (1-):  ");
+                    char ch = Convert.ToChar(Console.ReadLine());
+                    switch (ch)
+                    {
+                        case '1':
+                            {
+                                obj.transverse();
+
+                            }
+                            break;
+                        case '2':
+                            {
+                                if (obj.listEmpty() == true)
+                                {
+                                    Console.WriteLine("\nList empty");
+                                    break;
+                                }
+                                Node prev, curr;
+                                prev = curr = null;
+                                Console.Write("\n Enter the roll number of the student whose record is to be searched: ");
+                                int num = Convert.ToInt32(Console.ReadLine());
+                                if (obj.search(num, ref prev, ref curr) == false)
+                                    Console.WriteLine("\nRecord not found");
+                                else
+                                {
+                                    Console.WriteLine("\nrecord found");
+                                    Console.WriteLine("\nRoll Number: " + curr.rollNumber);
+                                    Console.WriteLine("\nName :  " + curr.name);
+                                }
+                            }
+                            break ;
+                        case '3':
+                            {
+                                obj.firstnode();
+                            }
+                            break;
+                        case '4':
+                            return;
+                        default:
+                            {
+                                Console.WriteLine("invalid option");
+                                break;
+                            }
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                }
+            }
+        }
     
     }
 
