@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.Security.Cryptography.X509Certificates;
 
 namespace Exercise3_003
 {
@@ -39,6 +39,24 @@ namespace Exercise3_003
                 return false;
         }
         public void transverse() /*transverse all the nodes of the list*/
+        {
+            if (listEmpty())
+                Console.WriteLine("\nList is empty");
+            else
+            {
+                Console.WriteLine("\nRecords in the list are:\n");
+                Node currentNode;
+                currentNode = last.next;
+                while (currentNode != last)
+                {
+                    Console.Write(currentNode.rollNumber + "      " + 
+                        currentNode.name + "\n");
+                    currentNode = currentNode.next;
+                }
+                Console.Write(last.rollNumber + "      " + last.name + "\n");
+            }
+            
+        }
     
     }
 
