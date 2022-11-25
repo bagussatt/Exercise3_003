@@ -14,10 +14,21 @@ namespace Exercise3_003
     class CircularList
     {
         Node last;
+        public CircularList()
+        {
+            last = null;
+        }
+        public bool search(int rollNo, ref Node previous, ref Node current)
+        //Searches for the specified node
+        {
+            for (previous = current = last.next; current != last; previous = current, current = current.next)
+            {
+                if (rollNo == current.rollNumber)
+                    return true; /*return true if the node is found*/
+            }
+        }
+    
     }
-    public bool search(int rollNo, ref Node previous,ref Node current)
-    //Searches for the specified node
-    {
 
-    }
+    
 }
