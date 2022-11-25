@@ -66,6 +66,13 @@ namespace Exercise3_003
                     last.next.rollNumber + "       " + last.next.name);
 
         }
+        public void insertbeginning()
+        {
+            Node temp = new Node;
+            temp.next = last.next;
+            last.next = temp;
+        }
+        static void Main(string[])
     
     }
 
